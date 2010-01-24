@@ -1,0 +1,86 @@
+
+=AutoSprite
+
+
+An easy, automated CSS image sprite creator.
+
+
+=Why do I care?
+
+Suppose you have 10 images on your homepage.  Rather than downloading 10 seperate images one at a time,  1 image is downloaded and we use CSS to show different parts of that image when we need to.  This speeds up your page load time.  It can be hard to manage this manually since you need to keep appending images to a sprite file and updating your css file with the correct offsets, etc.  Auto Sprite lets you get back to more important things.
+
+
+=Install
+
+1. Install auto_sprite and RMagick.
+
+    gem install RMagick auto_sprite
+
+2. Edit your environement.rb add config.gem "auto_sprite"
+ 
+=Usage
+1. Include the stylesheet in your layout:
+
+	<%= stylesheet_link_tag "auto_sprite" %>
+
+2. Create a directory called sprites in your images directory (e.g. RAILS_ROOT/public/images/sprites)
+
+3. Put the images you want to link to in your public/images/sprites directory.  
+
+4.  Use your images like you normally would:
+
+    <%= image_tag 'sprites/logo.png'  %>
+    <%= image_tag 'sprites/icon1.jpg' %>
+
+5.  Reload after adding any new images to sprites/ and enjoy your now faster rendering website.
+
+
+You'll notice that should auto_sprite be removed, your application will still work!
+
+
+=Notes
+- Animated images are not supported.
+- Any image format supported by RMagick should work.
+- Images of mixed sizes are not a problem.
+
+=Details
+
+Whenever rails reloads, it will automatically generate two files:
+
+  RAILS_ROOT/public/stylesheets/auto_sprite.css
+  RAILS_ROOT/public/images/auto_sprite.png
+
+
+The image tag will automatically generate a SPAN tag for any images located in the sprite directory.
+
+  <span class="_as_logo_png"></span> instead of <img src="/images/sprites/logo.png" />
+
+  Note: before 1.0.3, div tags were generated but this sometimes generated invalid HTML.
+
+
+Here is an exmplmple of the stylehseet that would be generated if you had two files face3.png and face4.png
+
+._as_face3_png {
+   background-position:0 0px;
+   height:16px;
+   width:16px;
+}
+
+._as_face4_png{
+  background-position:0 -16px;
+  height:16px;
+  width:16px;
+}
+
+._as_face3_png, 
+._as_face3_png {
+  display:inline-block;
+  background-image:url('/images/auto_sprite.png');
+  background-repeat:no-repeat; 
+}
+
+=Contact
+  sblackstone@gmail.com
+  http://fargle.org/auto_sprite
+
+Copyright (c) 2010 Stephen Blackstone, released under the MIT license
