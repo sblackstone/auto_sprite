@@ -2,10 +2,9 @@ spec = Gem::Specification.new do |s|
 
 require 'fileutils'
   s.name = "auto_sprite"
-  s.version = "1.0.3"
+  s.version = "1.0.4"
   s.author = "Stephen Blackstone"
   s.email = "sblackstone@gmail.com"
-  s.rubyforge_project = "autosprite"
   s.homepage = "http://fargle.org/auto_sprite"
   s.platform = Gem::Platform::RUBY
   s.summary = "A fully-Automagic Sprite Builder"

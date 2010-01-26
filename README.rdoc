@@ -1,5 +1,5 @@
 
-=AutoSprite
+=AutoSprite 1.0.4
 
 
 An easy, automated CSS image sprite creator.
@@ -32,6 +32,11 @@ Suppose you have 10 images on your homepage.  Rather than downloading 10 seperat
     <%= image_tag 'sprites/logo.png'  %>
     <%= image_tag 'sprites/icon1.jpg' %>
 
+	As of Auto Sprite 1.0.4 image_tag can be passed a :title giving icons a hover text..
+
+	<%= image_tag "sprites/stuff.png", :title => "I like Ice Cream" %>
+
+
 5.  Reload after adding any new images to sprites/ and enjoy your now faster rendering website.
 
 
@@ -43,6 +48,7 @@ You'll notice that should auto_sprite be removed, your application will still wo
 - Any image format supported by RMagick should work.
 - Images of mixed sizes are not a problem.
 
+
 =Details
 
 Whenever rails reloads, it will automatically generate two files:
@@ -51,11 +57,9 @@ Whenever rails reloads, it will automatically generate two files:
   RAILS_ROOT/public/images/auto_sprite.png
 
 
-The image tag will automatically generate a SPAN tag for any images located in the sprite directory.
+The image tag will automatically generate a div tag for any images located in the sprite directory.
 
-  <span class="_as_logo_png"></span> instead of <img src="/images/sprites/logo.png" />
-
-  Note: before 1.0.3, div tags were generated but this sometimes generated invalid HTML.
+  <div class="_as_logo_png"></div> instead of <img src="/images/sprites/logo.png" />
 
 
 Here is an exmplmple of the stylehseet that would be generated if you had two files face3.png and face4.png
