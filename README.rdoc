@@ -59,7 +59,7 @@ Whenever rails reloads, it will automatically generate two files:
 
 The image tag will automatically generate a div tag for any images located in the sprite directory.
 
-  <div class="_as_logo_png"></div> instead of <img src="/images/sprites/logo.png" />
+  <span class="_as_logo_png"></span> instead of <img src="/images/sprites/logo.png" />
 
 
 Here is an exmplmple of the stylehseet that would be generated if you had two files face3.png and face4.png
