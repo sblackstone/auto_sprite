@@ -1,11 +1,9 @@
 
 =AutoSprite 1.0.4
 
-
 An easy, automated CSS image sprite creator.
 
-
-=Why do I care?
+*Website*::   http://github.com/sblackstone/auto_sprite
 
 Suppose you have 10 images on your homepage.  Rather than downloading 10 seperate images one at a time,  1 image is downloaded and we use CSS to show different parts of that image when we need to.  This speeds up your page load time.  It can be hard to manage this manually since you need to keep appending images to a sprite file and updating your css file with the correct offsets, etc.  Auto Sprite lets you get back to more important things.
 
@@ -21,70 +19,65 @@ Suppose you have 10 images on your homepage.  Rather than downloading 10 seperat
 =Usage
 1. Include the stylesheet in your layout:
 
-	<%= stylesheet_link_tag "auto_sprite" %>
+    <%= stylesheet_link_tag "auto_sprite" %>`
 
 2. Create a directory called sprites in your images directory (e.g. RAILS_ROOT/public/images/sprites)
 
 3. Put the images you want to link to in your public/images/sprites directory.  
 
-4.  Use your images like you normally would:
+4. Use your images like you normally would:
 
-    <%= image_tag 'sprites/logo.png'  %>
     <%= image_tag 'sprites/icon1.jpg' %>
 
-	As of Auto Sprite 1.0.4 image_tag can be passed a :title giving icons a hover text..
-
-	<%= image_tag "sprites/stuff.png", :title => "I like Ice Cream" %>
-
-
-5.  Reload after adding any new images to sprites/ and enjoy your now faster rendering website.
+    A :title can also be passed so your icons have tooltips:
+  
+    <%= image_tag "sprites/stuff.png", :title => "I like Ice Cream" %>
 
 
-You'll notice that should auto_sprite be removed, your application will still work!
-
+5. Reload after adding any new images to sprites/ and enjoy your now faster rendering website.
 
 =Notes
 - Animated images are not supported.
 - Any image format supported by RMagick should work.
 - Images of mixed sizes are not a problem.
-
+- Should auto_sprite be removed, your application still works!
 
 =Details
 
 Whenever rails reloads, it will automatically generate two files:
 
-  RAILS_ROOT/public/stylesheets/auto_sprite.css
-  RAILS_ROOT/public/images/auto_sprite.png
+    RAILS_ROOT/public/stylesheets/auto_sprite.css
+    RAILS_ROOT/public/images/auto_sprite.png
 
 
 The image tag will automatically generate a div tag for any images located in the sprite directory.
 
-  <span class="_as_logo_png"></span> instead of <img src="/images/sprites/logo.png" />
+    <span class="_as_logo_png"></span> instead of <img src="/images/sprites/logo.png" />
 
 
 Here is an exmplmple of the stylehseet that would be generated if you had two files face3.png and face4.png
 
-._as_face3_png {
-   background-position:0 0px;
-   height:16px;
-   width:16px;
-}
+    ._as_face3_png {
+       background-position:0 0px;
+       height:16px;
+       width:16px;
+    }
 
-._as_face4_png{
-  background-position:0 -16px;
-  height:16px;
-  width:16px;
-}
+    ._as_face4_png{
+      background-position:0 -16px;
+      height:16px;
+      width:16px;
+    }
 
-._as_face3_png, 
-._as_face3_png {
-  display:inline-block;
-  background-image:url('/images/auto_sprite.png');
-  background-repeat:no-repeat; 
-}
+    ._as_face3_png, 
+    ._as_face3_png {
+      display:inline-block;
+      background-image:url('/images/auto_sprite.png');
+      background-repeat:no-repeat; 
+    }
 
 =Contact
   sblackstone@gmail.com
-  http://fargle.org/auto_sprite
+  http://github.com/sblackstone/auto_sprite
 
 Copyright (c) 2010 Stephen Blackstone, released under the MIT license
