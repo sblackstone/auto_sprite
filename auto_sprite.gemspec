@@ -2,7 +2,7 @@ spec = Gem::Specification.new do |s|
 
 require 'fileutils'
   s.name = "auto_sprite"
-  s.version = "1.0.4"
+  s.version = "1.1.0"
   s.author = "Stephen Blackstone"
   s.email = "sblackstone@gmail.com"
   s.homepage = "http://fargle.org/auto_sprite"

@@ -1,5 +1,5 @@
 
-=AutoSprite 1.0.4
+=AutoSprite 1.1.0
 
 An easy, automated CSS image sprite creator.
 
@@ -42,7 +42,9 @@ Suppose you have 10 images on your homepage.  Rather than downloading 10 seperat
 
 ==Details
 
-Whenever rails reloads, it will automatically generate two files:
+When rails starts, it checks whether or not the CSS or Sprite file is stale or missing.  
+
+If so, it will create:
 
     RAILS_ROOT/public/stylesheets/auto_sprite.css
     RAILS_ROOT/public/images/auto_sprite.png

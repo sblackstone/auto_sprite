@@ -9,11 +9,11 @@ module AutoSprite
 
   class << self
     def sprite_file_paths
-      sprite_file_names.map {|f| File.join(SPRITE_ASSETS_PATH, f) }
+      @sprite_file_paths ||= sprite_file_names.map {|f| File.join(SPRITE_ASSETS_PATH, f) }
     end
 
     def sprite_file_names
-      Dir.entries(SPRITE_ASSETS_PATH).reject { |f| 
+      @sprite_file_names ||= Dir.entries(SPRITE_ASSETS_PATH).reject { |f| 
         !File.file?(File.join(SPRITE_ASSETS_PATH,f))
       }
     end
@@ -24,11 +24,19 @@ module AutoSprite
       "_as_#{filename}"
     end
 
+    def stale?
+      to_check = [sprite_file_paths , SPRITE_ASSETS_PATH].flatten
+      !FileUtils.uptodate?(SPRITE_IMG_PATH , to_check) ||
+      !FileUtils.uptodate?(CSS_FILE_PATH   , to_check)    
+    end
+
     def setup!
       FileUtils::mkdir_p(SPRITE_ASSETS_PATH)
-      FileUtils::rm_f(CSS_FILE_PATH)   
-      FileUtils::rm_f(SPRITE_IMG_PATH)
-      write_new_assets
+      if stale?      
+        FileUtils::rm_f(CSS_FILE_PATH)   
+        FileUtils::rm_f(SPRITE_IMG_PATH)
+        write_new_assets
+      end
     end
 
     def write_new_assets
