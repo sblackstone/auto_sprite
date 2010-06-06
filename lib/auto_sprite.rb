@@ -52,7 +52,7 @@ module AutoSprite
             pos = pos + img.rows;
           end
           f << all_class_names.join(",")
-          f << "{display:inline-block;background-image:url('#{SPRITE_IMG_URL}');background-repeat:no-repeat;}"
+          f << "{display:inline-block;background-image:url('#{SPRITE_IMG_URL}?#{File.mtime(SPRITE_IMG_PATH).to_i}');background-repeat:no-repeat;}"
         end
       end
     end
