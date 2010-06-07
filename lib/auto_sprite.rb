@@ -65,9 +65,8 @@ module AutoSprite::Helpers
     base.class_eval do
       def image_tag(source, options = {})
         src = path_to_image(source)
-        title = (options[:title].nil? or options[:title].empty?) ? "" : "title='#{options[:title]}'"
         if src =~ /\/images\/sprites/
-          "<span #{title} class='#{AutoSprite.generate_css_name(src)}'></span>"
+          content_tag :span, '', options.merge(:class => AutoSprite.generate_css_name(src))
         else
           super(source,options)
         end
